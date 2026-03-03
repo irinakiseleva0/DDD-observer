@@ -4,7 +4,7 @@ import { publish } from "./domain/events"
 
 import { registerLogger } from "./observers/logger"
 import { registerNotifier } from "./observers/notifier"
-import { registerEtaCalculator } from "./observers/etaCalculator"
+import { registerEtaCalculator } from "./observers/eta"
 
 // Plug observers into the event system
 registerLogger()
@@ -28,7 +28,6 @@ try {
   const msg = (e as Error).message
   console.error("Invalid order input:", msg)
 
-  // ✅ publish rejection event (observers can log it)
   publish({ type: "OrderRejected", reason: msg, raw: orderOneRaw })
 }
 
