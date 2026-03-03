@@ -1,5 +1,5 @@
-import { subscribe } from "../domain/events"
-import { mockAuditLog } from "../services/mockAudit"
+import { subscribe } from "../domain/events.js"
+import { mockAuditLog } from "../services/mockAudit.js"
 
 export function registerLogger() {
   subscribe((event) => {

@@ -1,10 +1,10 @@
 import { v4 as uuidv4 } from "uuid"
-import { createOrder } from "./domain/order"
-import { publish } from "./domain/events"
+import { createOrder } from "./domain/order.js"
+import { publish } from "./domain/events.js"
 
-import { registerLogger } from "./observers/logger"
-import { registerNotifier } from "./observers/notifier"
-import { registerEtaCalculator } from "./observers/eta"
+import { registerLogger } from "./observers/logger.js"
+import { registerNotifier } from "./observers/notifier.js"
+import { registerEtaCalculator } from "./observers/eta.js"
 
 // Plug observers into the event system
 registerLogger()

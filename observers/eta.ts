@@ -1,5 +1,5 @@
-import { subscribe } from "../domain/events"
-import { mockRecalculateEta } from "../services/mockEta"
+import { subscribe } from "../domain/events.js"
+import { mockRecalculateEta } from "../services/mockEta.js"
 
 export function registerEtaCalculator() {
   subscribe((event) => {

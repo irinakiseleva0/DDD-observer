@@ -1,5 +1,5 @@
 // domain/order.ts
-import { publish } from "./events"
+import { publish } from "./events.js"
 
 //Brand helper 
 export type Brand<T, Name extends string> = T & { readonly __brand: Name }

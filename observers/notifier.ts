@@ -1,5 +1,5 @@
-import { subscribe } from "../domain/events"
-import { mockSendEmail } from "../services/mockEmail"
+import { subscribe } from "../domain/events.js"
+import { mockSendEmail } from "../services/mockEmail.js"
 
 export function registerNotifier() {
   subscribe((event) => {
