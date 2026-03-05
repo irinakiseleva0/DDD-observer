@@ -1,5 +1,5 @@
 // domain/order.ts
-import { publish } from "./events.js"
+import { EMITTER, publish } from "./events.js"
 
 //Brand helper 
 export type Brand<T, Name extends string> = T & { readonly __brand: Name }
@@ -75,10 +75,11 @@ export function createOrder(input: {
   })
 
   //domain event
-  publish({
+    publish({
+    emitter: EMITTER,
     type: "OrderCreated",
-    orderId: input.id,
-    total: total as unknown as number,
+    orderId: id,
+    total: Number(total),
   })
 
   return order
