@@ -1,5 +1,5 @@
 // unique emitter name
-export const EMITTER = "OrderDomain"
+export const EMITTER = "OrderDomain" as const
 
 // Domain events
 export type DomainEvent =
