@@ -5,6 +5,14 @@ export function registerLogger() {
   subscribe((event) => {
     if (event.emitter !== EMITTER) return
 
-    mockAuditLog(`EVENT: ${event.type}`, event)
+    switch (event.type) {
+      case "OrderCreated":
+        mockAuditLog("Order created", event)
+        break
+
+      case "OrderRejected":
+        mockAuditLog("Order rejected", event)
+        break
+    }
   })
 }
