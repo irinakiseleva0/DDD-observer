@@ -1,17 +1,15 @@
 import { v4 as uuidv4 } from "uuid"
 import { createOrder } from "./domain/order.js"
-import { publish } from "./domain/events.js"
+import { EMITTER, publish } from "./domain/events.js"
 
 import { registerLogger } from "./observers/logger.js"
 import { registerNotifier } from "./observers/notifier.js"
 import { registerEtaCalculator } from "./observers/eta.js"
 
-// Plug observers into the event system
 registerLogger()
 registerNotifier()
 registerEtaCalculator()
 
-// Wrong input that should be rejected by the domain logic
 const orderOneRaw = {
   id: uuidv4(),
   name: "order one",
@@ -28,10 +26,9 @@ try {
   const msg = (e as Error).message
   console.error("Invalid order input:", msg)
 
-  publish({ type: "OrderRejected", reason: msg, raw: orderOneRaw })
+  publish({ emitter: EMITTER, type: "OrderRejected", reason: msg, raw: orderOneRaw })
 }
 
-// Valid input (should succeed + trigger observers)
 const orderTwoRaw = {
   id: uuidv4(),
   name: "order two",
